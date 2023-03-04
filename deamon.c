@@ -13,7 +13,7 @@
 char *ExecuteShellCommandWithExitCode(const char *command, int *exit_code) {
     FILE *fp;
     char buffer[1024];
-    char *output = NULL;
+    char *output = malloc(1);
     size_t output_size = 0;
     int status;
 
@@ -22,6 +22,9 @@ char *ExecuteShellCommandWithExitCode(const char *command, int *exit_code) {
         *exit_code = -1;
         return NULL;
     }
+
+    output[0] = '\0';
+    memset(buffer, 0, sizeof(buffer));
 
     while (fgets(buffer, sizeof(buffer), fp) != NULL) {
         output_size += strlen(buffer);
