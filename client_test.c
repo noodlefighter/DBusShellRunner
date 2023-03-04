@@ -4,7 +4,7 @@
 
 int main()
 {
-    char* output;
+    char* output = NULL;
     int exitcode;
     int ret = run_dbus_command("ls /", &output, &exitcode);
     if (ret == 0) {
@@ -13,6 +13,9 @@ int main()
     else if (ret != 0) {
         printf("DBus Command failed, return %d\n", ret);
     }
-    free(output);
+    if (output) {
+        free(output);
+        output = NULL;
+    }
     return 0;
 }
