@@ -9,7 +9,7 @@
 #define DBUS_DAEMON_INTERFACE   SHELL_RUNNER_DBUS_INTERFACE_NAME
 #define DBUS_DAEMON_METHOD      "ExecuteCommand"
 
-int shell_runner_exec(char* command, char** result, int *exitcode)
+int shell_runner_exec(const char* command, char** result, int *exitcode)
 {
     DBusError error;
     DBusConnection *connection;
@@ -65,6 +65,6 @@ int shell_runner_exec(char* command, char** result, int *exitcode)
 
     // Free the reply and close the connection
     dbus_message_unref(reply);
-    dbus_connection_close(connection);
+    dbus_connection_unref(connection);
     return 0;
 }

@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.5)
-project(dbus_example C)
+cmake_minimum_required(VERSION 3.16)
+project(dbus_example)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -20,6 +20,13 @@ add_executable(
     client_test.c
 )
 target_link_libraries(client_test ${DBUS_LIBRARIES})
+
+add_executable(
+    client_test_cpp
+    shell_runner.c
+    client_test.cpp
+)
+target_link_libraries(client_test_cpp ${DBUS_LIBRARIES})
 
 # Install daemon executable to system binary directory
 install(TARGETS shellrunner DESTINATION /usr/bin)
