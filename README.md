@@ -1,13 +1,7 @@
 # DBusShellRunner
 
 > 注意：本项目使用ChatGPT编写，然后人工debug修改程序完成，不要在严肃场景下使用！
-
-```
-Reply Error (Message recipient disconnected from message bus without replying)
-DBus Command failed, return -1
-munmap_chunk(): invalid pointer
-```
-
+> 介绍也是胡扯，别看了
 
 DBus命令执行服务是一个基于DBus协议的守护进程，提供了一个DBus服务，可以让其他程序通过DBus发送命令并执行，然后返回执行结果。它通过DBus实现了程序间的通信，提供了一种安全、高效、可靠的方式来执行命令并返回结果。
 
