@@ -6,7 +6,7 @@ int main()
 {
     char* output = NULL;
     int exitcode;
-    int ret = run_dbus_command("ls /", &output, &exitcode);
+    int ret = shell_runner_exec("ls /", &output, &exitcode);
     if (ret == 0) {
         printf("DBus Command succeeded:\nexitcode:%d\n%s", exitcode, output);
     }

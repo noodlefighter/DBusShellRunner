@@ -9,7 +9,7 @@
 #define DBUS_DAEMON_INTERFACE   SHELL_RUNNER_DBUS_INTERFACE_NAME
 #define DBUS_DAEMON_METHOD      "ExecuteCommand"
 
-int run_dbus_command(char* command, char** result, int *exitcode)
+int shell_runner_exec(char* command, char** result, int *exitcode)
 {
     DBusError error;
     DBusConnection *connection;
