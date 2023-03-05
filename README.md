@@ -2,11 +2,6 @@
 
 > 注意：本项目使用ChatGPT编写，然后人工debug修改程序完成，不要在严肃场景下使用！
 
-已知问题：
-
-- 第二次执行命令，deamon会崩溃
-- shell_runner客户端，似乎没处理好DBus通讯异常时的情况：
-
 ```
 Reply Error (Message recipient disconnected from message bus without replying)
 DBus Command failed, return -1
