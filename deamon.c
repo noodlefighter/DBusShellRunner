@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <glib.h>
 #include <dbus/dbus.h>
 #include "shell_runner.h"
 
@@ -55,8 +54,7 @@ static DBusHandlerResult dbus_request_handler(DBusConnection *conn, DBusMessage 
     } else {
         char *output = NULL;
         int exit_code = 0;
-        char *str = g_utf8_make_valid(command, -1);
-        output = ExecuteShellCommandWithExitCode(str, &exit_code);
+        output = ExecuteShellCommandWithExitCode(command, &exit_code);
         printf("Exit code: %d\n%s", exit_code, output);
         reply = dbus_message_new_method_return(message);
         DBusMessageIter iter;
@@ -64,7 +62,6 @@ static DBusHandlerResult dbus_request_handler(DBusConnection *conn, DBusMessage 
         dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &output);
         dbus_message_iter_append_basic(&iter, DBUS_TYPE_INT32, &exit_code);
 
-        free(str);
         if (NULL != output) {
             free(output);
         }

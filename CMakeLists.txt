@@ -5,13 +5,12 @@ set(CMAKE_C_STANDARD 11)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(DBUS REQUIRED dbus-1)
-pkg_check_modules(GLIB REQUIRED glib-2.0)
 
-include_directories(${DBUS_INCLUDE_DIRS} ${GLIB_INCLUDE_DIRS})
+include_directories(${DBUS_INCLUDE_DIRS})
 
 # Build daemon executable
 add_executable(shellrunner deamon.c)
-target_link_libraries(shellrunner ${DBUS_LIBRARIES} ${GLIB_LIBRARIES})
+target_link_libraries(shellrunner ${DBUS_LIBRARIES})
 
 # Build library
 add_library(libshellrunner shell_runner.c)
