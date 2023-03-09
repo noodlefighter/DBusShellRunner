@@ -16,6 +16,7 @@ target_link_libraries(shellrunner ${DBUS_LIBRARIES})
 add_library(libshellrunner shell_runner.c)
 add_library(shellrunner::libshellrunner ALIAS libshellrunner)
 target_link_libraries(libshellrunner PUBLIC ${DBUS_LIBRARIES})
+target_include_directories(libshellrunner PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
 # Build test program
 add_executable(
